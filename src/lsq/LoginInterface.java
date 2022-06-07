@@ -1,15 +1,22 @@
+package lsq;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class LoginInterface {
+
+
+
+    public LoginInterface(){showUI();}
+    javax.swing.JFrame jf = new javax.swing.JFrame();
     // 创建一个初始化界面的方法
     public void showUI() {
         // 1: 创建一个窗体（javax.swing.JFrame）对象
-        javax.swing.JFrame jf = new javax.swing.JFrame();
+
         // 2:使程序可退出（关闭界面是程序结束运行）
 //        jf.setDefaultCloseOperation(3);
         jf.setTitle("2048");
-        jf.setSize(1000, 800);
+        jf.setSize(1000, 850);
         jf.setLocation(200, 200);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,6 +119,27 @@ public class LoginInterface {
 
         jTextField1.setPreferredSize(new Dimension(80,50));
         jTextField2.setPreferredSize(new Dimension(80,50));
+
+        /****** 登录按钮  ********/
+        //实现点击按钮后响应
+        //监听器
+        //通过子类ButtonListener（该子类于监听器文件中创建）创建对象（action）并初始化
+        LButtonListener action = new LButtonListener();
+        //将监听器与按钮组件绑定
+        jButton1.addActionListener(action);
+
+
+        //判断账号密码
+        action.jtf = jTextField1;
+        action.jps = (JPasswordField) jTextField2;
+        action.jFrame = jf;
+
+        /****** 注册按钮  ********/
+        RButtonListener rAction = new RButtonListener();
+        jButton2.addActionListener(rAction);
+
+
     }
+
 }
 

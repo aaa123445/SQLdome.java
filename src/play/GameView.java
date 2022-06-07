@@ -356,6 +356,7 @@ public class GameView implements IBaseData {
     @Override
     public void showView() {
         jframeMain.setVisible(true);
+
     }
 
 }
