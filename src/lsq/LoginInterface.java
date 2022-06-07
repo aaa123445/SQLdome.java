@@ -136,6 +136,7 @@ public class LoginInterface {
 
         /****** 注册按钮  ********/
         RButtonListener rAction = new RButtonListener();
+        rAction.jFrame=jf;
         jButton2.addActionListener(rAction);
 
 
