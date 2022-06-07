@@ -26,6 +26,10 @@ public class GameView implements IBaseData {
         init();
     }
 
+    public int getScore() {
+        return score;
+    }
+
     @Override
     public void init() {
         jframeMain = new JFrame("2048小游戏");
@@ -245,7 +249,7 @@ public class GameView implements IBaseData {
                             checks[index][i].value = checks[j][i].value;
                             checks[j][i].value = 0;
                             isadd = true;
-                        } else if (checks[++index][i].value == 0){
+                        } else if (checks[++index][i].value == 0) {
                             checks[index][i].value = checks[j][i].value;
                             checks[j][i].value = 0;
                             isadd = true;
@@ -299,13 +303,12 @@ public class GameView implements IBaseData {
                 FontMetrics fms = getFontMetrics(topicFont);
                 String value = "Game Over!";
                 g.drawString(value,
-                        (getWidth()-fms.stringWidth(value)) / 2,
+                        (getWidth() - fms.stringWidth(value)) / 2,
                         getHeight() / 2);
             }
         }
 
         // 绘制方格
-        // Graphics2D 类扩展了 Graphics 类，
         // 提供了对几何形状、坐标转换、颜色管理和文本布局更为复杂的控制
         private void drawCheck(Graphics g, int i, int j) {
             Graphics2D gg = (Graphics2D) g;

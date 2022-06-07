@@ -6,9 +6,12 @@ import java.awt.*;
 public class LoginInterface {
 
 
+    public LoginInterface() {
+        showUI();
+    }
 
-    public LoginInterface(){showUI();}
     javax.swing.JFrame jf = new javax.swing.JFrame();
+
     // 创建一个初始化界面的方法
     public void showUI() {
         // 1: 创建一个窗体（javax.swing.JFrame）对象
@@ -22,18 +25,20 @@ public class LoginInterface {
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        jf.setResizable(false);   //放大页面
 
-    // 3：设置界面布局
+        // 3：设置界面布局
         //布局（流布局）
         java.awt.BorderLayout borderLayout = new java.awt.BorderLayout();
         jf.setLayout(borderLayout);
 
-        JPanel jPanel1=new JPanel();JPanel jPanel2=new JPanel();JPanel jPanel3=new JPanel();
+        JPanel jPanel1 = new JPanel();
+        JPanel jPanel2 = new JPanel();
+        JPanel jPanel3 = new JPanel();
 
         // 4：添加图片
         //加载图片
-        javax.swing.ImageIcon image=new javax.swing.ImageIcon("D:\\桌面\\java\\untitled2\\src\\img\\2048-~2.jpg");
+        javax.swing.ImageIcon image = new javax.swing.ImageIcon("src/img/2048-~2.jpg");
         //创建图片标签（图片载体）显示图片
-        javax.swing.JLabel jla=new javax.swing.JLabel(image);
+        javax.swing.JLabel jla = new javax.swing.JLabel(image);
         //设置图片大小
         java.awt.Dimension dm = new java.awt.Dimension(1000, 450);
         jla.setPreferredSize(dm);
@@ -47,38 +52,38 @@ public class LoginInterface {
 
 
         // 5：添加账号、密码标签，文本框
-        JLabel jLabel1,jLabel2;
-        JTextField jTextField1,jTextField2;
+        JLabel jLabel1, jLabel2;
+        JTextField jTextField1, jTextField2;
 
         jPanel2.setLayout(null);
 
-        jLabel1=new JLabel("账 号 :");
-        jLabel2=new JLabel(" 密 码 :");
+        jLabel1 = new JLabel("账 号 :");
+        jLabel2 = new JLabel(" 密 码 :");
 
-        jLabel1.setBounds(150,20,150,30);
-        jLabel2.setBounds(150,75,150,30);
+        jLabel1.setBounds(150, 20, 150, 30);
+        jLabel2.setBounds(150, 75, 150, 30);
 
-        jTextField1=new JTextField(30);
-        jTextField2=new JPasswordField(30);
-        jTextField1.setBounds(350,20,400,50);
-        jTextField2.setBounds(350,75,400,50);
+        jTextField1 = new JTextField(30);
+        jTextField2 = new JPasswordField(30);
+        jTextField1.setBounds(350, 20, 400, 50);
+        jTextField2.setBounds(350, 75, 400, 50);
 
         jPanel2.add(jLabel1);
         jPanel2.add(jTextField1);
         jPanel2.add(jLabel2);
         jPanel2.add(jTextField2);
 
-        jf.add(jPanel2,BorderLayout.CENTER);
+        jf.add(jPanel2, BorderLayout.CENTER);
 
         // 6：添加登录、注册按钮
-        JButton jButton1,jButton2;
-        jButton1=new JButton("登录");
-        jButton2=new JButton("注册");
+        JButton jButton1, jButton2;
+        jButton1 = new JButton("登录");
+        jButton2 = new JButton("注册");
         jPanel3.add(jButton1);
         jPanel3.add(jButton2);
-        jPanel3.setLayout(new GridLayout(2,1,0,4));
+        jPanel3.setLayout(new GridLayout(2, 1, 0, 4));
 
-        jf.add(jPanel3,BorderLayout.SOUTH);
+        jf.add(jPanel3, BorderLayout.SOUTH);
 
 
         // 7：设置页面样式
@@ -96,11 +101,11 @@ public class LoginInterface {
         jLabel1.setHorizontalAlignment(SwingConstants.CENTER);//center label text
         Font font = new Font("黑体", Font.BOLD, 30);
         jLabel1.setFont(font);
-        jLabel1.setForeground(new Color(0,0,0));
+        jLabel1.setForeground(new Color(0, 0, 0));
 
         jLabel1.setHorizontalAlignment(SwingConstants.CENTER);//center label text
         jLabel2.setFont(font);
-        jLabel2.setForeground(new Color(0,0,0));
+        jLabel2.setForeground(new Color(0, 0, 0));
 
         jTextField1.setFont(new Font("宋体", Font.PLAIN, 30));
         jTextField2.setFont(new Font("宋体", Font.PLAIN, 30));
@@ -114,11 +119,11 @@ public class LoginInterface {
         jButton1.setBorderPainted(false);
         jButton2.setBorderPainted(false);
 
-        jButton1.setPreferredSize(new Dimension(120,60));
-        jButton2.setPreferredSize(new Dimension(120,60));
+        jButton1.setPreferredSize(new Dimension(120, 60));
+        jButton2.setPreferredSize(new Dimension(120, 60));
 
-        jTextField1.setPreferredSize(new Dimension(80,50));
-        jTextField2.setPreferredSize(new Dimension(80,50));
+        jTextField1.setPreferredSize(new Dimension(80, 50));
+        jTextField2.setPreferredSize(new Dimension(80, 50));
 
         /****** 登录按钮  ********/
         //实现点击按钮后响应

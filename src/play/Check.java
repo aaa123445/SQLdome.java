@@ -1,7 +1,6 @@
 package play;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 
 // 方格类
 public class Check {

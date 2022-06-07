@@ -1,6 +1,6 @@
 package play;
 
-import java.awt.Font;
+import java.awt.*;
 
 public interface IBaseData {
     Font topicFont = new Font("微软雅黑", Font.BOLD, 50);
@@ -15,5 +15,6 @@ public interface IBaseData {
     int topicFontdata = 30;
 
     void init();
+
     void showView();
 }

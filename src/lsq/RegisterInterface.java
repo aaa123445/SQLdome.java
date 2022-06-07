@@ -66,42 +66,12 @@ public class RegisterInterface {
         jLabel2.setBounds(100,85,250,30);
         jLabel3.setBounds(100,140,250,30);
 
-
-
         jTextField1=new JTextField(30);
         jTextField2=new JPasswordField(30);
         jTextField3=new JPasswordField(30);
         jTextField1.setBounds(350,20,400,50);
         jTextField2.setBounds(350,75,400,50);
         jTextField3.setBounds(350,130,400,50);
-
-
-        //提示图片 √
-        ImageIcon imageT=new ImageIcon("");
-        JLabel jlaT1=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-        JLabel jlaT2=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-        JLabel jlaT3=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-
-        //提示图片 ×
-        ImageIcon imageF=new ImageIcon("");
-        JLabel jlaF1=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-        JLabel jlaF2=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-        JLabel jlaF3=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-
-        //设置提示图片位置
-        jlaT1.setBounds(750,20,50,50);
-        jlaT2.setBounds(750,20,50,50);
-        jlaT3.setBounds(750,20,50,50);
-
-        jlaF1.setBounds(750,20,50,50);
-        jlaF2.setBounds(750,20,50,50);
-        jlaF3.setBounds(750,20,50,50);
 
 
 //        jTextField1.setName("7位数字 + 字母 + 特殊符号");
@@ -124,22 +94,12 @@ public class RegisterInterface {
 
 
         /********格式判断提示*********/
-        DocumentListener accountTextChangeListener=new DocumentListener() {
+        DocumentListener textChangeListener=new DocumentListener() {
             protected void changeFilter(DocumentEvent event) {
                 javax.swing.text.Document document = event.getDocument();
                 try {
-                    TextCheck textCheck=new TextCheck();
                     String text=document.getText(0, document.getLength());
-                    if (textCheck.checkAccount(text)) {
-                        jlaT1.setVisible(true);
-                        System.out.println(text);
-                    }
-
-                    else {
-                        jlaF1.setVisible(true);
-                        System.out.println(false);
-                    }
-
+                    System.out.println(text);
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -159,81 +119,9 @@ public class RegisterInterface {
                 changeFilter(e);
             }
         };
-
-        DocumentListener pwdTextChangeListener=new DocumentListener() {
-            protected void changeFilter(DocumentEvent event) {
-                javax.swing.text.Document document = event.getDocument();
-                try {
-                    TextCheck textCheck=new TextCheck();
-                    String text=document.getText(0, document.getLength());
-                    if (textCheck.checkPassword(text)) {
-                        System.out.println(text);
-                        jlaT2.setVisible(true);
-                    }
-                    else {
-                        System.out.println(false);
-                        jlaF2.setVisible(true);
-                    }
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    System.err.println(ex);
-                }
-            }
-
-            public void changedUpdate(DocumentEvent e) {
-                changeFilter(e);
-            }
-
-            public void insertUpdate(DocumentEvent e) {
-                changeFilter(e);
-            }
-
-            public void removeUpdate(DocumentEvent e) {
-                changeFilter(e);
-            }
-        };
-
-        DocumentListener rPwdTextChangeListener=new DocumentListener() {
-            protected void changeFilter(DocumentEvent event) {
-                javax.swing.text.Document document = event.getDocument();
-                try {
-                    TextCheck textCheck=new TextCheck();
-                    String text=document.getText(0, document.getLength());
-                    if (textCheck.checkPassword(text)) {
-                        System.out.println(text);
-                        jlaT3.setVisible(true);
-                    }
-                    else {
-                        System.out.println(false);
-                        jlaF3.setVisible(true);
-                    }
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    System.err.println(ex);
-                }
-            }
-
-            public void changedUpdate(DocumentEvent e) {
-                changeFilter(e);
-            }
-
-            public void insertUpdate(DocumentEvent e) {
-                changeFilter(e);
-            }
-
-            public void removeUpdate(DocumentEvent e) {
-                changeFilter(e);
-            }
-        };
+        jTextField1.getDocument().addDocumentListener(textChangeListener);
 
 
-        jTextField1.getDocument().addDocumentListener(accountTextChangeListener);
-        jTextField2.getDocument().addDocumentListener(pwdTextChangeListener);
-        jTextField3.getDocument().addDocumentListener(rPwdTextChangeListener);
-
-        /****************************/
         JButton jButton1,jButton2;
         jButton1=new JButton("注册");
         jButton2=new JButton("返回");
@@ -295,14 +183,6 @@ public class RegisterInterface {
         rrAction.jtf=jTextField1;
         rrAction.jps= (JPasswordField) jTextField2;
         rrAction.rJps= (JPasswordField) jTextField3;
-
-
-        /****** 返回按钮  ********/
-        ReturnButtonListener returnAction=new ReturnButtonListener();
-        returnAction.jFrame=jf;
-        jButton2.addActionListener(returnAction);
-
-
 
     }
 }
