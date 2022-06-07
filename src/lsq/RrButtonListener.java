@@ -3,10 +3,8 @@ package lsq;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class RrButtonListener implements ActionListener {
+public class RrButtonListener extends TextCheck implements ActionListener {
 
     public JTextField jtf;
     public JPasswordField jps;
@@ -30,29 +28,29 @@ public class RrButtonListener implements ActionListener {
     }
 
     //校验创建事件页面账号格式
-    private boolean checkAccount(String accountNumber) {
-        String valicateAccount="^[\\w@\\$\\^!~,.\\*]{0,7}+$";
-        Pattern pattern = Pattern.compile(valicateAccount);
-        Matcher matcher = pattern.matcher(accountNumber);
-        boolean matches = matcher.matches();
-        if(matches) {
-            return true;
-        }else {
-            return false;
-        }
-    }
-
-    //密码校验：
-    private boolean checkPassword(String passWord) {
-        String valicatePassword="^[\\w@\\$\\^!~,.\\*]{8,16}+$";
-        Pattern pattern = Pattern.compile(valicatePassword);
-        Matcher matcher = pattern.matcher(passWord);
-        boolean matches = matcher.matches();
-        if(matches) {
-            return true;
-        }else {
-            return false;
-        }
-    }
+//    public boolean checkAccount(String accountNumber) {
+//        String valicateAccount="^[\\w@\\$\\^!~,.\\*]{7}+$";
+//        Pattern pattern = Pattern.compile(valicateAccount);
+//        Matcher matcher = pattern.matcher(accountNumber);
+//        boolean matches = matcher.matches();
+//        if(matches) {
+//            return true;
+//        }else {
+//            return false;
+//        }
+//    }
+//
+//    //密码校验：
+//    public boolean checkPassword(String passWord) {
+//        String valicatePassword="^[\\w@\\$\\^!~,.\\*]{8,16}+$";
+//        Pattern pattern = Pattern.compile(valicatePassword);
+//        Matcher matcher = pattern.matcher(passWord);
+//        boolean matches = matcher.matches();
+//        if(matches) {
+//            return true;
+//        }else {
+//            return false;
+//        }
+//    }
 
 }
