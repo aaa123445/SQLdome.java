@@ -10,6 +10,8 @@ public class RrButtonListener extends TextCheck implements ActionListener {
     public JPasswordField jps;
     public JPasswordField rJps;
 
+    JFrame jFrame;
+
     public void actionPerformed(ActionEvent e) {
         String text = jtf.getText();
         String pas = jps.getText();
@@ -17,13 +19,41 @@ public class RrButtonListener extends TextCheck implements ActionListener {
         if(checkAccount(text))
             if(pas.equals(rPas))
                 if(checkPassword(pas))
+                {
                     System.out.println("恭喜你，小逼仔子，注册成功");
+                    int userOption =  JOptionPane.showConfirmDialog(null,"注册成功是否返回登录页？","提示",JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);	//确认对话框
+//如果用户选择的是OK
+                    if (userOption == JOptionPane.OK_OPTION) {
+                        System.err.println("是");
+                        jFrame.dispose();
+                        LoginInterface loginInterface=new LoginInterface();
+                        loginInterface.showUI();
+                    }else {
+                        System.out.println("否");
+                        jFrame.dispose();
+                        RegisterInterface registerInterface=new RegisterInterface();
+                        registerInterface.showUI();
+                    }
+
+
+
+                }
                 else
-                    System.out.println("傻逼，密码格式错误");
+                {
+                    System.out.println("密码格式错误");
+                    JOptionPane.showMessageDialog(null, " 密码格式错误 ", " WARRING", JOptionPane.ERROR_MESSAGE);
+                }
+
             else
-                System.out.println("傻逼，密码不一致");
+            {
+                System.out.println("密码不一致");
+                JOptionPane.showMessageDialog(null, " 密码不一致 ", " WARRING", JOptionPane.ERROR_MESSAGE);
+
+            }
         else
-            System.out.println("傻逼，账号格式错误");
+            System.out.println("账号格式错误");
+        JOptionPane.showMessageDialog(null, " 账号格式错误 ", " WARRING", JOptionPane.ERROR_MESSAGE);
+
 
     }
 

@@ -28,10 +28,21 @@ class focusAdapter extends FocusAdapter {  //JTextField提示文字通用方法
     @Override
     public void focusGained(FocusEvent e) {
         String tempString = txt.getText();
+        TextCheck textCheck = new TextCheck();
 //        System.out.println(txt);
-        jlat.setBounds(0,0,0,0);
-        jlaf.setBounds(0,0,0,0);
-        }
+        if (I) {
+            if (textCheck.checkAccount(tempString)) {
+                jlat.setBounds(750, position, 50, 50);
+                jlaf.setBounds(0, 0, 0, 0);
+                System.out.println("focus"+tempString);
+            }
+        }else {
+            if (textCheck.checkPassword(tempString)) {
+                jlat.setBounds(750, position, 50, 50);
+                jlaf.setBounds(0, 0, 0, 0);
+                System.out.println("focus"+tempString);
+        }}
+    }
     //焦点失去
     @Override
     public void focusLost(FocusEvent e) {

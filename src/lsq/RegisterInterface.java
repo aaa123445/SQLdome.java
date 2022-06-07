@@ -16,7 +16,7 @@ public class RegisterInterface {
 //        jf.setDefaultCloseOperation(3);
         jf.setTitle("2048");
         jf.setSize(1000, 850);
-        jf.setLocation(600, 600);
+        jf.setLocation(200, 200);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setResizable(false);   //放大页面
@@ -92,14 +92,14 @@ public class RegisterInterface {
         JLabel jlaF3=new JLabel(imageF);
 //        jla.setPreferredSize(new Dimension(50, 50));
 
-//        设置提示图片位置
-//        jlaT1.setBounds(750,20,50,50);
-//        jlaT2.setBounds(750,70,50,50);
-//        jlaT3.setBounds(750,120,50,50);
-
-//        jlaF1.setBounds(750,20,50,50);
-//        jlaF2.setBounds(750,70,50,50);
-//        jlaF3.setBounds(750,120,50,50);
+////        设置提示图片位置
+//        jlaT1.setBounds(0,0,0,0);
+//        jlaT2.setBounds(0,0,0,0);
+//        jlaT3.setBounds(0,0,0,0);
+//
+//        jlaF1.setBounds(0,0,0,0);
+//        jlaF2.setBounds(0,0,0,0);
+//        jlaF3.setBounds(0,0,0,0);
 
 
 //        jTextField1.setName("7位数字 + 字母 + 特殊符号");
@@ -149,13 +149,22 @@ public class RegisterInterface {
                     }else if (textCheck.checkAccount(text)) {
                         jlaT1.setBounds(750,20,50,50);
                         jlaF1.setBounds(0,0,0,0);
-                        System.out.println(text);
+                        System.out.println("Document"+text);
                     }else if (text.length()>=7){
-                        System.out.println(false);
+                        System.out.println("Document"+false);
                         jlaF1.setBounds(750,20,50,50);
                         jlaT1.setBounds(0,0,0,0);
                     }
 
+//                    if (textCheck.checkAccount(text)) {
+//                        jlaT1.setBounds(750,20,50,50);
+//                        jlaF1.setBounds(0,0,0,0);
+//                        System.out.println(text);
+//                    }else if (text.length()>=7){
+//                        System.out.println(false);
+//                        jlaF1.setBounds(750,20,50,50);
+//                        jlaT1.setBounds(0,0,0,0);
+//                    }
 
 
                 } catch (Exception ex) {
@@ -186,21 +195,31 @@ public class RegisterInterface {
 
                     if(text.length()<8)
                         if(!textCheck.checkSign(text)&&text.length()!=0){
-                            jlaF1.setBounds(750,70,50,50);
-                            jlaT1.setBounds(0,0,0,0);
+                            jlaF2.setBounds(750,75,50,50);
+                            jlaT2.setBounds(0,0,0,0);
                         }
                         else{
-                            jlaT1.setBounds(0,0,0,0);
-                            jlaF1.setBounds(0,0,0,0);
-                        }else if (textCheck.checkAccount(text)) {
-                        jlaT1.setBounds(750,70,50,50);
-                        jlaF1.setBounds(0,0,0,0);
-                        System.out.println(text);
-                    }else if (text.length()>=8){
-                        System.out.println(false);
-                        jlaF1.setBounds(750,70,50,50);
-                        jlaT1.setBounds(0,0,0,0);
+                            jlaT2.setBounds(0,0,0,0);
+                            jlaF2.setBounds(0,0,0,0);
+                        }else if (textCheck.checkPassword(text)) {
+                        jlaT2.setBounds(750,75,50,50);
+                        jlaF2.setBounds(0,0,0,0);
+                        System.out.println("Document"+text);
+                    }else if (text.length()>8){
+                        System.out.println("Document"+false);
+                        jlaF2.setBounds(750,75,50,50);
+                        jlaT2.setBounds(0,0,0,0);
                     }
+
+//                    if (textCheck.checkPassword(text)) {
+//                        jlaT2.setBounds(750,75,50,50);
+////                        jlaF1.setBounds(0,0,0,0);
+//                        System.out.println(text);
+//                    }else if (text.length()>=8){
+//                        System.out.println(false);
+//                        jlaF2.setBounds(750,75,50,50);
+////                        jlaT1.setBounds(0,0,0,0);
+//                    }
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -222,28 +241,41 @@ public class RegisterInterface {
         };
 
         DocumentListener rPwdTextChangeListener=new DocumentListener() {
+
             protected void changeFilter(DocumentEvent event) {
                 javax.swing.text.Document document = event.getDocument();
                 try {
                     TextCheck textCheck=new TextCheck();
+                    String passWord=jTextField2.getText();
                     String text=document.getText(0, document.getLength());
                     if(text.length()<8)
                         if(!textCheck.checkSign(text)&&text.length()!=0){
-                            jlaF1.setBounds(750,120,50,50);
-                            jlaT1.setBounds(0,0,0,0);
+                            jlaF3.setBounds(750,130,50,50);
+                            jlaT3.setBounds(0,0,0,0);
                         }
                         else{
-                            jlaT1.setBounds(0,0,0,0);
-                            jlaF1.setBounds(0,0,0,0);
-                        }else if (textCheck.checkAccount(text)) {
-                        jlaT1.setBounds(750,120,50,50);
-                        jlaF1.setBounds(0,0,0,0);
-                        System.out.println(text);
-                    }else if (text.length()>=8){
-                        System.out.println(false);
-                        jlaF1.setBounds(750,120,50,50);
-                        jlaT1.setBounds(0,0,0,0);
+                            jlaT3.setBounds(0,0,0,0);
+                            jlaF3.setBounds(0,0,0,0);
+                        }else if (textCheck.checkPassword(text)&&text.equals(passWord))
+                        {
+                        jlaT3.setBounds(750,130,50,50);
+                        jlaF3.setBounds(0,0,0,0);
+                        System.out.println("Document"+text+"passWord"+passWord);
+                    }else if (text.length()>8){
+                        System.out.println("Document"+false);
+                        jlaF3.setBounds(750,130,50,50);
+                        jlaT3.setBounds(0,0,0,0);
                     }
+
+//                    if (textCheck.checkPassword(text)) {
+//                        jlaT3.setBounds(750,130,50,50);
+////                        jlaF1.setBounds(0,0,0,0);
+//                        System.out.println(text);
+//                    }else if (text.length()>=8){
+//                        System.out.println(false);
+//                        jlaF3.setBounds(750,130,50,50);
+////                        jlaT1.setBounds(0,0,0,0);
+//                    }
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -269,10 +301,10 @@ public class RegisterInterface {
         jTextField2.getDocument().addDocumentListener(pwdTextChangeListener);
         jTextField3.getDocument().addDocumentListener(rPwdTextChangeListener);
 
-
+//
         jTextField1.addFocusListener(new focusAdapter(jTextField1,jlaF1,jlaT1,true,20));
-        jTextField2.addFocusListener(new focusAdapter(jTextField2,jlaF2,jlaT2,false,70));
-        jTextField3.addFocusListener(new focusAdapter(jTextField3,jlaF3,jlaT3,false,120));
+        jTextField2.addFocusListener(new focusAdapter(jTextField2,jlaF2,jlaT2,false,75));
+        jTextField3.addFocusListener(new focusAdapter(jTextField3,jlaF3,jlaT3,false,130));
 
 
         /*************注册返回按钮***************/
@@ -337,6 +369,7 @@ public class RegisterInterface {
         rrAction.jtf=jTextField1;
         rrAction.jps= (JPasswordField) jTextField2;
         rrAction.rJps= (JPasswordField) jTextField3;
+        rrAction.jFrame=jf;
 
 
         /****** 返回按钮  ********/
