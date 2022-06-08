@@ -8,8 +8,6 @@ import java.awt.*;
 
 public class RegisterInterface {
 
-    public  RegisterInterface(){showUI();
-    }
     // 创建一个初始化界面的方法
     public void showUI() {
         // 1: 创建一个窗体（javax.swing.JFrame）对象
@@ -18,10 +16,10 @@ public class RegisterInterface {
 //        jf.setDefaultCloseOperation(3);
         jf.setTitle("2048");
         jf.setSize(1000, 850);
-        jf.setLocation(200, 200);
+        jf.setLocation(600, 600);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        jf.setResizable(false);   //放大页面
+        jf.setResizable(false);   //放大页面
         // 3：设置界面布局
         //布局（流布局）
         BorderLayout borderLayout = new BorderLayout();
@@ -31,7 +29,7 @@ public class RegisterInterface {
 
         // 4：添加图片
         //加载图片
-        ImageIcon image=new ImageIcon("D:\\桌面\\java\\untitled2\\src\\img\\2048-~2.jpg");
+        ImageIcon image=new ImageIcon("src/img/2048-~2.jpg");
         //创建图片标签（图片载体）显示图片
         JLabel jla=new JLabel(image);
         //设置图片大小
@@ -41,9 +39,9 @@ public class RegisterInterface {
         jPanel1.add(jla);
         jf.add(jPanel1, BorderLayout.NORTH);
 
-        jPanel2.setLayout(new FlowLayout(FlowLayout.CENTER));
-        /*设置布局，从左边开始填充按钮，当放不下的时候 */
-        jPanel2.setPreferredSize(new Dimension(250, 300));//设置大小
+//        jPanel2.setLayout(new FlowLayout(FlowLayout.CENTER));
+//        /*设置布局，从左边开始填充按钮，当放不下的时候 */
+//        jPanel2.setPreferredSize(new Dimension(250, 300));//设置大小
 
 
         // 5：添加账号、密码标签，文本框
@@ -76,32 +74,32 @@ public class RegisterInterface {
         jTextField3.setBounds(350,130,400,50);
 
 
-        //提示图片 √
-        ImageIcon imageT=new ImageIcon("");
-        JLabel jlaT1=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-        JLabel jlaT2=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-        JLabel jlaT3=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
+//        提示图片 √
+        ImageIcon imageT=new ImageIcon("src/img/对.jpg");
+        JLabel jlaT1=new JLabel(imageT);
+//        jla.setPreferredSize(new Dimension(50, 50));
+        JLabel jlaT2=new JLabel(imageT);
+//        jla.setPreferredSize(new Dimension(50, 50));
+        JLabel jlaT3=new JLabel(imageT);
+//        jla.setPreferredSize(new Dimension(50, 50));
 
         //提示图片 ×
-        ImageIcon imageF=new ImageIcon("");
-        JLabel jlaF1=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-        JLabel jlaF2=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
-        JLabel jlaF3=new JLabel(image);
-        jla.setPreferredSize(new Dimension(1000, 450));
+        ImageIcon imageF=new ImageIcon("src/img/F.jpg");
+        JLabel jlaF1=new JLabel(imageF);
+//        jla.setPreferredSize(new Dimension(50, 50));
+        JLabel jlaF2=new JLabel(imageF);
+//        jla.setPreferredSize(new Dimension(50, 50));
+        JLabel jlaF3=new JLabel(imageF);
+//        jla.setPreferredSize(new Dimension(50, 50));
 
-        //设置提示图片位置
-        jlaT1.setBounds(750,20,50,50);
-        jlaT2.setBounds(750,20,50,50);
-        jlaT3.setBounds(750,20,50,50);
+//        设置提示图片位置
+//        jlaT1.setBounds(750,20,50,50);
+//        jlaT2.setBounds(750,70,50,50);
+//        jlaT3.setBounds(750,120,50,50);
 
-        jlaF1.setBounds(750,20,50,50);
-        jlaF2.setBounds(750,20,50,50);
-        jlaF3.setBounds(750,20,50,50);
+//        jlaF1.setBounds(750,20,50,50);
+//        jlaF2.setBounds(750,70,50,50);
+//        jlaF3.setBounds(750,120,50,50);
 
 
 //        jTextField1.setName("7位数字 + 字母 + 特殊符号");
@@ -113,6 +111,7 @@ public class RegisterInterface {
 //        jTextField3.addFocusListener(new focusAdapterWithReminderTextAdapter(jTextField3,jTextField3.getName()));
 
 //        jLabel1.requestFocus();
+
         jPanel2.add(jLabel0);
         jPanel2.add(jLabel1);
         jPanel2.add(jTextField1);
@@ -120,25 +119,43 @@ public class RegisterInterface {
         jPanel2.add(jTextField2);
         jPanel2.add(jLabel3);
         jPanel2.add(jTextField3);
+
+        jPanel2.add(jlaT1);
+        jPanel2.add(jlaT2);
+        jPanel2.add(jlaT3);
+        jPanel2.add(jlaF1);
+        jPanel2.add(jlaF2);
+        jPanel2.add(jlaF3);
+
         jf.add(jPanel2,BorderLayout.CENTER);
 
 
         /********格式判断提示*********/
         DocumentListener accountTextChangeListener=new DocumentListener() {
-            protected void changeFilter(DocumentEvent event) {
+            public void changeFilter(DocumentEvent event) {
                 javax.swing.text.Document document = event.getDocument();
                 try {
                     TextCheck textCheck=new TextCheck();
                     String text=document.getText(0, document.getLength());
-                    if (textCheck.checkAccount(text)) {
-                        jlaT1.setVisible(true);
+                    if(text.length()<7)
+                    if(!textCheck.checkSign(text)&&text.length()!=0){
+                        jlaF1.setBounds(750,20,50,50);
+                        jlaT1.setBounds(0,0,0,0);
+                    }
+                    else{
+                        jlaT1.setBounds(0,0,0,0);
+                        jlaF1.setBounds(0,0,0,0);
+
+                    }else if (textCheck.checkAccount(text)) {
+                        jlaT1.setBounds(750,20,50,50);
+                        jlaF1.setBounds(0,0,0,0);
                         System.out.println(text);
+                    }else if (text.length()>=7){
+                        System.out.println(false);
+                        jlaF1.setBounds(750,20,50,50);
+                        jlaT1.setBounds(0,0,0,0);
                     }
 
-                    else {
-                        jlaF1.setVisible(true);
-                        System.out.println(false);
-                    }
 
 
                 } catch (Exception ex) {
@@ -166,13 +183,23 @@ public class RegisterInterface {
                 try {
                     TextCheck textCheck=new TextCheck();
                     String text=document.getText(0, document.getLength());
-                    if (textCheck.checkPassword(text)) {
+
+                    if(text.length()<8)
+                        if(!textCheck.checkSign(text)&&text.length()!=0){
+                            jlaF1.setBounds(750,70,50,50);
+                            jlaT1.setBounds(0,0,0,0);
+                        }
+                        else{
+                            jlaT1.setBounds(0,0,0,0);
+                            jlaF1.setBounds(0,0,0,0);
+                        }else if (textCheck.checkAccount(text)) {
+                        jlaT1.setBounds(750,70,50,50);
+                        jlaF1.setBounds(0,0,0,0);
                         System.out.println(text);
-                        jlaT2.setVisible(true);
-                    }
-                    else {
+                    }else if (text.length()>=8){
                         System.out.println(false);
-                        jlaF2.setVisible(true);
+                        jlaF1.setBounds(750,70,50,50);
+                        jlaT1.setBounds(0,0,0,0);
                     }
 
                 } catch (Exception ex) {
@@ -200,13 +227,22 @@ public class RegisterInterface {
                 try {
                     TextCheck textCheck=new TextCheck();
                     String text=document.getText(0, document.getLength());
-                    if (textCheck.checkPassword(text)) {
+                    if(text.length()<8)
+                        if(!textCheck.checkSign(text)&&text.length()!=0){
+                            jlaF1.setBounds(750,120,50,50);
+                            jlaT1.setBounds(0,0,0,0);
+                        }
+                        else{
+                            jlaT1.setBounds(0,0,0,0);
+                            jlaF1.setBounds(0,0,0,0);
+                        }else if (textCheck.checkAccount(text)) {
+                        jlaT1.setBounds(750,120,50,50);
+                        jlaF1.setBounds(0,0,0,0);
                         System.out.println(text);
-                        jlaT3.setVisible(true);
-                    }
-                    else {
+                    }else if (text.length()>=8){
                         System.out.println(false);
-                        jlaF3.setVisible(true);
+                        jlaF1.setBounds(750,120,50,50);
+                        jlaT1.setBounds(0,0,0,0);
                     }
 
                 } catch (Exception ex) {
@@ -233,7 +269,13 @@ public class RegisterInterface {
         jTextField2.getDocument().addDocumentListener(pwdTextChangeListener);
         jTextField3.getDocument().addDocumentListener(rPwdTextChangeListener);
 
-        /****************************/
+
+        jTextField1.addFocusListener(new focusAdapter(jTextField1,jlaF1,jlaT1,true,20));
+        jTextField2.addFocusListener(new focusAdapter(jTextField2,jlaF2,jlaT2,false,70));
+        jTextField3.addFocusListener(new focusAdapter(jTextField3,jlaF3,jlaT3,false,120));
+
+
+        /*************注册返回按钮***************/
         JButton jButton1,jButton2;
         jButton1=new JButton("注册");
         jButton2=new JButton("返回");

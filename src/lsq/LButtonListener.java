@@ -25,6 +25,8 @@ public class LButtonListener implements ActionListener  {
             if(pas.equals("123456"))
             {
                 System.out.println("登录成功");
+                JOptionPane.showMessageDialog(null, " 登录成功 ", " CONGRATULATIONS", JOptionPane.QUESTION_MESSAGE);
+
                 GameView g = new GameView();
                 g.showView();
                 jFrame.dispose();
@@ -32,11 +34,14 @@ public class LButtonListener implements ActionListener  {
             else
             {
                 System.out.println("密码错误");
+                JOptionPane.showMessageDialog(null, " 密码错误 ", " WARRING", JOptionPane.ERROR_MESSAGE);
+
             }
         }
         else
         {
             System.out.println("账号不存在");
+            JOptionPane.showMessageDialog(null, " 账号不存在 ", " warring", JOptionPane.ERROR_MESSAGE);
         }
 
     }

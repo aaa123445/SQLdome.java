@@ -20,7 +20,7 @@ public class LoginInterface {
         jf.setLocation(200, 200);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        jf.setResizable(false);   //放大页面
+        jf.setResizable(false);   //放大页面
 
     // 3：设置界面布局
         //布局（流布局）
