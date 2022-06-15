@@ -31,7 +31,7 @@ public class LoginInterface {
 
         // 4：添加图片
         //加载图片
-        javax.swing.ImageIcon image=new javax.swing.ImageIcon("D:\\桌面\\java\\untitled2\\src\\img\\2048-~2.jpg");
+        javax.swing.ImageIcon image=new javax.swing.ImageIcon("src/img/2048-~2.jpg");
         //创建图片标签（图片载体）显示图片
         javax.swing.JLabel jla=new javax.swing.JLabel(image);
         //设置图片大小

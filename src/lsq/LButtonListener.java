@@ -6,6 +6,7 @@ import play.GameView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 //创建子类（ButtonListener）并使用接口（监听器）
 public class LButtonListener implements ActionListener  {
 
@@ -25,38 +26,27 @@ public class LButtonListener implements ActionListener  {
         //开始判断输入格式
         if (textCheck.checkAccount(text)&&textCheck.checkPassword(pas))
         //通过简单if语句对内容进行判断。这里假设正确的账号为“123” 密码为“123456”
-        {if(text.equals("1234567"))
         {
-            if(pas.equals("12345678"))
-            {
+            if (new SQLdome().login(text, pas)) {
                 System.out.println("登录成功");
                 JOptionPane.showMessageDialog(null, " 登录成功 ", " CONGRATULATIONS", JOptionPane.QUESTION_MESSAGE);
 
                 GameView g = new GameView();
                 g.showView();
                 jFrame.dispose();
-            }
-            else
-            {
-                System.out.println("密码错误");
-                JOptionPane.showMessageDialog(null, " 密码错误 ", " WARRING", JOptionPane.ERROR_MESSAGE);
+            } else {
+                System.out.println("账号或密码错误");
+                JOptionPane.showMessageDialog(null, " 账号或密码错误 ", " WARRING", JOptionPane.ERROR_MESSAGE);
 
             }
 //                GameView g = new GameView();
 //                g.showView();
 //                jFrame.dispose();
-            }
-        else
-        {
-            System.out.println("账号不存在");
-            JOptionPane.showMessageDialog(null, " 账号不存在 ", " warring", JOptionPane.ERROR_MESSAGE);
-
-        }}else{
+        }else {
             System.out.println("输入格式有误");
             JOptionPane.showMessageDialog(null, " 非法输入！！！ ", " warring", JOptionPane.ERROR_MESSAGE);
 
         }
-
     }
 
 

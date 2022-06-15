@@ -21,6 +21,7 @@ public class RrButtonListener extends TextCheck implements ActionListener {
                 if(checkPassword(pas))
                 {
                     System.out.println("恭喜你，小逼仔子，注册成功");
+                    new SQLdome().userregister(text,pas);
                     int userOption =  JOptionPane.showConfirmDialog(null,"注册成功是否返回登录页？","提示",JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);	//确认对话框
 //如果用户选择的是OK
                     if (userOption == JOptionPane.OK_OPTION) {
@@ -34,9 +35,6 @@ public class RrButtonListener extends TextCheck implements ActionListener {
                         RegisterInterface registerInterface=new RegisterInterface();
                         registerInterface.showUI();
                     }
-
-
-
                 }
                 else
                 {

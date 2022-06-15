@@ -1,3 +1,5 @@
+package lsq;
+
 import java.sql.*;
 
 public class SQLdome {
@@ -6,7 +8,7 @@ public class SQLdome {
     static final String DB_URL = "jdbc:mysql://localhost:3306/user?serverTimezone=UTC";
 
     //登录
-    public void login(String useName,String password){
+    public boolean login(String useName, String password){
 
         boolean isValid = false;
         String sql="select * from users where usename='"+useName+"' and pwd='"+password+"'";
@@ -27,8 +29,8 @@ public class SQLdome {
             throw new RuntimeException(e);
         }
         if (isValid)
-            System.out.println("登录成功!");
-            else System.out.println("用户名或密码错误请检查!");;
+            return true;
+            else return false;
     }
     //注册
     public void userregister(String useName,String password){
