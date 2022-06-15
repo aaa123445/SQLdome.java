@@ -1,4 +1,6 @@
-package lsq;
+package login.ui;
+
+import login.sqlAPI.sql_user;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +23,7 @@ public class RrButtonListener extends TextCheck implements ActionListener {
                 if(checkPassword(pas))
                 {
                     System.out.println("恭喜你，小逼仔子，注册成功");
-                    new SQLdome().userregister(text,pas);
+                    new sql_user().userregister(text,pas);
                     int userOption =  JOptionPane.showConfirmDialog(null,"注册成功是否返回登录页？","提示",JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);	//确认对话框
 //如果用户选择的是OK
                     if (userOption == JOptionPane.OK_OPTION) {
@@ -48,11 +50,11 @@ public class RrButtonListener extends TextCheck implements ActionListener {
                 JOptionPane.showMessageDialog(null, " 密码不一致 ", " WARRING", JOptionPane.ERROR_MESSAGE);
 
             }
-        else
-            System.out.println("账号格式错误");
-        JOptionPane.showMessageDialog(null, " 账号格式错误 ", " WARRING", JOptionPane.ERROR_MESSAGE);
+        else {
+            System.out.println("注册账号格式错误");
+            JOptionPane.showMessageDialog(null, "注册账号格式错误 ", " WARRING", JOptionPane.ERROR_MESSAGE);
 
-
+        }
     }
 
     //校验创建事件页面账号格式

@@ -1,7 +1,8 @@
-package lsq;
+package login.ui;
 
 
-import play.GameView;
+import game_2048.GameView;
+import login.sqlAPI.sql_user;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -27,7 +28,7 @@ public class LButtonListener implements ActionListener  {
         if (textCheck.checkAccount(text)&&textCheck.checkPassword(pas))
         //通过简单if语句对内容进行判断。这里假设正确的账号为“123” 密码为“123456”
         {
-            if (new SQLdome().login(text, pas)) {
+            if (new sql_user().login(text, pas)) {
                 System.out.println("登录成功");
                 JOptionPane.showMessageDialog(null, " 登录成功 ", " CONGRATULATIONS", JOptionPane.QUESTION_MESSAGE);
 

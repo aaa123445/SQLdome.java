@@ -1,4 +1,4 @@
-package lsq;
+package login.ui;
 
 
 //参数:jtextfield组件，提示文字string
@@ -50,12 +50,12 @@ class focusAdapter extends FocusAdapter {  //JTextField提示文字通用方法
             System.out.println(tempString);
         TextCheck textCheck=new TextCheck();
         if (I)
-        {if(tempString.length()<7)
+        {if(tempString.length()<7&&(tempString.length()!=0))
           {
                 jlaf.setBounds(750,position,50,50);
                 jlat.setBounds(0,0,0,0);
             }}
-        else {if(tempString.length()<8)
+        else {if(tempString.length()<8&&(tempString.length()!=0))
         {
             jlaf.setBounds(750,position,50,50);
             jlat.setBounds(0,0,0,0);

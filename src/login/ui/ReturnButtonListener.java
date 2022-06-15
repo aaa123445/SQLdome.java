@@ -1,4 +1,4 @@
-package lsq;
+package login.ui;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

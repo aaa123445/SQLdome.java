@@ -1,4 +1,4 @@
-package play;
+package game_2048;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,8 +27,8 @@ public class GameView implements IBaseData {
     }
 
     @Override
-    public void init() {
-        jframeMain = new JFrame("2048小游戏");
+    public void init() {   //游戏窗口UI
+        jframeMain = new JFrame("2048");
         jframeMain.setSize(jframeWidth, jframeHeight);
         jframeMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframeMain.setLocationRelativeTo(null);

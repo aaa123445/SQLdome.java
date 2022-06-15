@@ -1,4 +1,4 @@
-package play;
+package game_2048;
 
 import java.awt.Font;
 
